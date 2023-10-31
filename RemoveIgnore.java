@@ -16,11 +16,13 @@ public class RemoveIgnore extends Command {
 			ChatUtils.displayClientMessage("You must specify a name to unavoid.");
 			return;
 		}
-    AntiJimppa module = ((AntiJimppa)Client.Instance.getModuleByName("AntiJimppa"));
-		if (!(blockedNames.contains(args[1]))){
-      ChatUtils.displayClientMessage("Player with username \"" + args[1] + "\" was not found in the ignore list.");
+    		AntiJimppa module = ((AntiJimppa)Client.Instance.getModuleByName("AntiJimppa"));
+		if (!(module.blockedNames.contains(args[1]))){
+     			ChatUtils.displayClientMessage("Player with username \"" + args[1] + "\" was not found in the ignore list.");
 			return;
-    }
+    		}
+		
 		ChatUtils.displayClientMessage("Removed \"" + args[1] + "\" from ignore list.");
+		module.blockedNames.remove(args[1]);
 	}
 }
